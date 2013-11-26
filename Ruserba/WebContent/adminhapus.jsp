@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="java.util.*" %>
-    <%@page import="javax.swing.JFrame" %>
-    <%@page import="javax.swing.JOptionPane" %>
-	
+    <%@ page import="java.util.*" %>
+    <%@ page import="javax.swing.JFrame" %>
+    <%@ page import="javax.swing.JOptionPane" %>
+	<%@ page import="javafiles.*" %>
+
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,26 +14,46 @@
 </head>
 <body>
 
-	<%
+		<%
 		Enumeration names = request.getParameterNames();
 		Object[] options = { "Yes", "No" };
+		Boolean goingToDelete = true;
 		if (names.hasMoreElements()){
-		  	int n = JOptionPane.showOptionDialog(null, "Apakah Anda ingin menghapus data yang dipilih?", "Konfirmasi Penghapusan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
-		  	if (n == JOptionPane.YES_OPTION){
-				while (names.hasMoreElements()) {
-			     	String name = (String) names.nextElement();
-			     	StringBuffer sb = new StringBuffer(name);
-					sb.deleteCharAt(0);
-					System.out.println(sb.toString());
-			      	
-					
-					javafiles.BarangManager.Hapus(sb.toString());
-					
-				}
-				JOptionPane.showMessageDialog(new JFrame(), "Data yang dipilih telah dihapus");
+		  	//int n = JOptionPane.showOptionDialog(null, "Apakah Anda ingin menghapus data yang dipilih?", "Konfirmasi Penghapusan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+			%>
+			<script type="text/javascript">
+		  	function DeleteAlert(){
+
+			  	var r=confirm("Apakah Anda ingin menghapus data yang dipilih?");
+			  	if (!r)
+			  	{
+			  	    
+					window.location.href = "adminhapus.jsp";
+			  	}		  	
+			  	else{
+			  		<%
+			  		if (goingToDelete){
+				  		while (names.hasMoreElements()) {
+				  			String name = (String) names.nextElement();
+							StringBuffer sb = new StringBuffer(name);
+							sb.deleteCharAt(0);
+							System.out.println(sb.toString());
+					      	
+							
+							javafiles.BarangManager.Hapus(sb.toString());
+							
+						}
+			  		}
+					//JOptionPane.showMessageDialog(new JFrame(), "Data yang dipilih telah dihapus");
+					%>
+			  		alert("Data berhasil dihapus");
+			  	}
+			}
+		  	DeleteAlert();
+		  	</script>
+		  	<%
 		  	}
-		}
-	%>
+		%>
 
 	<jsp:include page="header.jsp"/>
 	

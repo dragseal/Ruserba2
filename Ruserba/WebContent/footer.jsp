@@ -6,18 +6,14 @@
   <li><a href="http://blog.caucho.com/">BLOG</a> |
   <li><a href="http://wiki.caucho.com/">WIKI</a> ||
   <li><a href="detail.jsp">detail</a>
+  <!-- Nanti empat link di bawah ini kalo session buat adminnya jadi, hapus ya -->
+  <li><a href="adminlistbarang.jsp">a1</a>
+  <li><a href="admintambah.jsp">a2</a>
+  <li><a href="adminhapus.jsp">a3</a>
+  <li><a href="adminubah.jsp">a4</a>
 
   </ul>
   
-  <div class="about">
-Copyright (c) 1998-2012 Caucho Technology, Inc. All rights reserved.<br><span class="caucho">caucho<sub>x</sub></span> ,
-<span class="resin">resin<sub>x</sub></span> and
-<span class="quercus">quercus<sub>x</sub></span>
 
-are registered trademarks of Caucho Technology, Inc.
-  </div>
 
-  <div class="about">
-     resin<sub>x</sub> is a cloud optimized, java<sub>x</sub> application server that supports the java ee webprofile <sub>x</sub>
-  </div>
 </div>

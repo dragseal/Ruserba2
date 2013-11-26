@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="java.util.*" %>
-    <%@page import="javax.swing.JFrame" %>
-    <%@page import="javax.swing.JOptionPane" %>
+    <%@ page import="java.util.*" %>
+    <%@ page import="javax.swing.JFrame" %>
+    <%@ page import="javax.swing.JOptionPane" %>
+    <%@ page import="javafiles.*" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,10 +29,10 @@
 					System.out.println(sb.toString());
 			      	
 					
-					javafiles.BarangManager.Ubah(sb.toString());
+					//javafiles.BarangManager.Ubah(sb.toString());
 					
 				}
-				JOptionPane.showMessageDialog(new JFrame(), "Data yang dipilih telah dihapus");
+				JOptionPane.showMessageDialog(new JFrame(), "Data yang dipilih telah diubah");
 		  	}
 		}
 	%>
@@ -42,7 +44,7 @@
 	<a href="adminhapus.jsp">Hapus Barang | </a>
 	Ubah Barang
 	
-	<form action="adminubah.jsp" method="post">
+	<form action="pengubahandata.jsp" method="post">
 		<table>
 			<tr>
 			<th>Nama</th>
@@ -68,7 +70,7 @@
 			          out.print("</td>");
 			  }
 			  out.print("<td>");
-			  box = "<input name=b" + id + " type='button' value='Ubah' >";
+			  box = "<input name=b" + id + " type='submit' value='Ubah' >";
 			  out.print(box);
 			  out.print("</td>");
 			  out.print("</tr>");

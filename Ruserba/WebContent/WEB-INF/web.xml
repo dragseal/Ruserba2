@@ -8,9 +8,17 @@
 		<servlet-name>hello</servlet-name> 
 		<servlet-class>javafiles.HelloWorld</servlet-class>
 	</servlet>
+	<servlet> 
+		<servlet-name>barangmanager</servlet-name> 
+		<servlet-class>javafiles.BarangManager</servlet-class>
+	</servlet>
 	<servlet-mapping> 
 		<servlet-name>hello</servlet-name> 
 		<url-pattern>/indexcontent</url-pattern> 
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>barangmanager</servlet-name> 
+		<url-pattern>/barangaction</url-pattern> 
 	</servlet-mapping>
 	<welcome-file-list> 
 		<welcome-file>index.jsp</welcome-file> 

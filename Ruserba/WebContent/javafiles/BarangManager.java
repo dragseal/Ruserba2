@@ -51,7 +51,7 @@ public class BarangManager {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			if (e.getMessage().contains("Duplicate entry"))
-				//JOptionPane.showMessageDialog(null, "Entri '" + nama + "' sudah ada");
+				JOptionPane.showMessageDialog(null, "Entri '" + nama + "' sudah ada");
 			e.printStackTrace();
 		}
 	}

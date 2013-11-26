@@ -8,11 +8,13 @@
  		<title> My first JSP </title> 
  	</head> 
  	<body> 
+ 		<jsp:include page="header.jsp"/>
  		<form action="indexcontent" method="post"> 
  			Please enter a color 
  			<input type="text" name="color"size="20px"> 
  			<input type="submit" value="submit"> 
  		</form> 
+ 		<jsp:include page="footer.jsp"/>
  		
  	</body> 
  </html>

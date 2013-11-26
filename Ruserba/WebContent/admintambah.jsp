@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="javax.swing.JFrame" %>
-    <%@page import="javax.swing.JOptionPane" %>
+    <%@ page import="javax.swing.JFrame" %>
+    <%@ page import="javax.swing.JOptionPane" %>
+    <%@ page import="javafiles.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,6 +11,8 @@
 <title>Admin: Tambah Barang</title>
 </head>
 <body>
+
+	
 
 	<%
 	  String nama = request.getParameter("nama");
@@ -20,6 +24,9 @@
 	  if (nama != null && harga != null 
 	          && stok != null && kategori != null && img_dir != null) {
 	      javafiles.BarangManager.Tambah(nama, harga, stok, kategori, img_dir);
+	      %><script>
+	          alert("Data berhasil ditambah");
+	  	  </script><%
 	  }
 	%>
 
@@ -47,7 +54,7 @@
 		<td>Kategori</td><td> <input type="text" name="kategori"></td>
 		</tr>
 		<tr>
-		<td>img_dir</td><td> <input type="text" name="img_dir"></td>
+		<td>img_dir</td><td> <input type="file" name="img_dir"></td>
 		</tr>
 		</table>
 		
