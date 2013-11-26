@@ -13,7 +13,7 @@
 	
 	<h1>${param.title}</h1>
 
-	<jsp:include page="${param.content}.jsp"/>
+	<!--><jsp:include page="${param.content}.jsp"/><-->
 	
 	<jsp:include page="footer.jsp"/>
 	
