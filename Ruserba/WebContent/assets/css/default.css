@@ -314,9 +314,107 @@
 
 	#header
 	{
-		position: relative;
-		padding: 3em 0em;
+		vertical-align:text-bottom;
+		display:block;
+		position:fixed;
+		top:0px;
+		left:0px;
+		padding:0px;
+		width: 100%;
+		height: 50px;
+		background: #bb0000;
 	}
+	
+	#headerMargin
+	{
+		width: 100%;
+		display:inline-block;
+		height: 60px;
+	}
+	
+	.headerItem
+	{
+		font-family: "Arial";
+		color: #ffffff;
+		font-size: 1.3em;
+		position:fixed;
+		display:block;
+		padding:0px;
+		height: 45px;
+		border:0;
+		background: #bb0000;
+		transition: color 0.2s, font-size 0.2s;
+	}
+	
+	.headerItem:hover
+	{
+		font-size: 1.35em;
+		color: #ffcc00;
+		cursor:pointer;
+	}
+	
+	
+
+	.dropDown {	
+		background: #bb0000;
+		position:fixed;
+		font-size: 1em;
+		color: #ffffff;
+	}
+	
+	.dropdown:hover{
+		cursor:pointer;
+	}
+	
+	.textInput{
+		font-family: "Arial";
+		color: #ffffff;
+		font-size: 1.3em;
+		vertical-align:text-bottom;
+		position:fixed;
+		padding:2px;
+		color: #000000;
+		font-size: 1em;
+		border: 0;
+		background: #dddddd;
+	}
+	
+	#searchBar{
+		top:10px;
+		left:100px;
+	}
+	#searchButton{
+		top:0px;
+		left:400px;
+	}
+	#kategoriDropDown{
+		top:10px;
+		left:290px;
+	}
+	#shoppingBag{
+		top:0px;
+		right:10px;
+	}
+	#login{
+		top:0px;
+		right:140px;
+	}
+	#register{
+		top:0px;
+		right:230px;
+	}
+	#hilang {
+		visibility:hidden; position:fixed;
+	}
+	
+	#popupLoginBubble{
+		position:fixed;
+		color: #ffffff;
+		top:55px;
+		right:10px;
+		background: #bb0000;
+	}
+	
 
 /*********************************************************************************/
 /* Logo                                                                          */

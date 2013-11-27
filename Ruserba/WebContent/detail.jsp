@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="assets/css/default.css" rel="stylesheet" type="text/css"/>
+<script src="assets/js/header.js"></script>
 <title>Detail Barang</title>
 <meta charset="ISO-8859-1">
 </head>
