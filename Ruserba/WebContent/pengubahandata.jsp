@@ -50,7 +50,7 @@
 			  int id = 0;
 			
 			  Iterator<String> it = list.iterator();
-			
+			  
 			  while (it.hasNext()) {
 			      id = Integer.parseInt(it.next());
 			      out.print("<tr>");
@@ -83,14 +83,24 @@
 		<tr>
 		<td>Kategori</td><td> <input type="text" name="kategori"></td>
 		</tr>
-		<tr>
-		<td>img_dir</td><td> <input type="text" name="img_dir"></td>
-		</tr>
+		<input type="hidden" name="img_dir" value = ${requestScope["filenameservletubah"]} >
 		</table>
 		
 		<br>
 		<input type="submit" value="submit">
 
+		</form>
+		
+		<br/>
+		
+		<form action="uploadfileubah" method="post" enctype="multipart/form-data">
+               File:  <input type="file" name="file" />
+                <input type="submit" value="upload" />
+        </form>
+        <div id="result">
+            <h3>${requestScope["message"]}</h3><br/>
+            <h3>File yang diupload: ${requestScope["filenameservletubah"]}</h3>
+        </div>   
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>

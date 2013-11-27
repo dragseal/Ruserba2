@@ -16,14 +16,14 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
-public class UploadServlet extends HttpServlet {
+public class UploadServletUbah extends HttpServlet {
 	private final String UPLOAD_DIRECTORY = "C:/Users/RANGGA Y.MANGINDAAN/workspace/EE/Ruserba/WebContent/assets/img";
 	
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       
-		// memproses multipart file
+        // memproses multipart file
         if(ServletFileUpload.isMultipartContent(request)){
         	String name = "";
             try {
@@ -37,11 +37,11 @@ public class UploadServlet extends HttpServlet {
                     }
                 }
            
-               
-               request.setAttribute("message", "Penambahan file sukses");
-               request.setAttribute("filenameservletadd", name);
+              
+               request.setAttribute("message", "Pengubahan file sukses");
+               request.setAttribute("filenameservletubah", name);
             } catch (Exception ex) {
-               request.setAttribute("message", "Penambahan file gagal karena " + ex);
+               request.setAttribute("message", "Pengubahan file gagal karena " + ex);
             }          
          
         }else{
@@ -49,7 +49,7 @@ public class UploadServlet extends HttpServlet {
                                  "Maaf, servlet ini hanya untuk upload");
         }
     
-        request.getRequestDispatcher("/admintambah.jsp").forward(request, response);
+        request.getRequestDispatcher("/pengubahandata.jsp").forward(request, response);
      
     }
 	

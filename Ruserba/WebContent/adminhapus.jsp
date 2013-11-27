@@ -19,41 +19,26 @@
 		Object[] options = { "Yes", "No" };
 		Boolean goingToDelete = true;
 		if (names.hasMoreElements()){
+			if (goingToDelete){
+		  		while (names.hasMoreElements()) {
+		  			String name = (String) names.nextElement();
+					StringBuffer sb = new StringBuffer(name);
+					sb.deleteCharAt(0);
+					System.out.println(sb.toString());
+			      	%>
+					<script>
+					alert("Data berhasil dihapus");
+					</script>
+					<%	
+					javafiles.BarangManager.Hapus(sb.toString());
+					
+				}
+	  		}
+		}
 		  	//int n = JOptionPane.showOptionDialog(null, "Apakah Anda ingin menghapus data yang dipilih?", "Konfirmasi Penghapusan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
-			%>
-			<script type="text/javascript">
-		  	function DeleteAlert(){
-
-			  	var r=confirm("Apakah Anda ingin menghapus data yang dipilih?");
-			  	if (!r)
-			  	{
-			  	    
-					window.location.href = "adminhapus.jsp";
-			  	}		  	
-			  	else{
-			  		<%
-			  		if (goingToDelete){
-				  		while (names.hasMoreElements()) {
-				  			String name = (String) names.nextElement();
-							StringBuffer sb = new StringBuffer(name);
-							sb.deleteCharAt(0);
-							System.out.println(sb.toString());
-					      	
-							
-							javafiles.BarangManager.Hapus(sb.toString());
-							
-						}
-			  		}
-					//JOptionPane.showMessageDialog(new JFrame(), "Data yang dipilih telah dihapus");
-					%>
-			  		alert("Data berhasil dihapus");
-			  	}
-			}
-		  	DeleteAlert();
-		  	</script>
-		  	<%
-		  	}
 		%>
+		
+			
 
 	<jsp:include page="header.jsp"/>
 	
@@ -62,7 +47,7 @@
 	Hapus Barang | 
 	<a href="adminubah.jsp">Ubah Barang | </a>
 	
-	<form action="adminhapus.jsp" method="post">
+	<form method="post">
 		<table>
 			<tr>
 			<th>Nama</th>
@@ -97,7 +82,8 @@
 		</table>
 		
 		<br>
-		<input type="submit" value="Hapus">
+		<!-- ><input type="submit" value="Hapus"> -->
+		<input type="submit" value="Hapus" onclick="if (confirm('Apakah Anda yakin menghapus data yang dipilih?')) { form.action='adminhapus.jsp'; } else { return false; }" />
 	</form>
 	
 	<jsp:include page="footer.jsp"/>

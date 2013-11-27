@@ -103,7 +103,7 @@ public class BarangManager {
 			*/
 			
 			ps.executeUpdate();
-			
+			System.out.println("hapus dijalankan");
 			con.close();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

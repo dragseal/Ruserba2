@@ -12,30 +12,9 @@
 <title>Admin: Ubah Barang</title>
 </head>
 <body>
-
-	<%
-		Enumeration names = request.getParameterNames();
-		Object[] options = { "Yes", "No" };
-		if (names.hasMoreElements()){
-			
-			
-			
-		  	int n = JOptionPane.showOptionDialog(null, "Apakah Anda ingin mengubah data yang dipilih?", "Konfirmasi Pengubahan", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
-		  	if (n == JOptionPane.YES_OPTION){
-				while (names.hasMoreElements()) {
-			     	String name = (String) names.nextElement();
-			     	StringBuffer sb = new StringBuffer(name);
-					sb.deleteCharAt(0);
-					System.out.println(sb.toString());
-			      	
-					
-					//javafiles.BarangManager.Ubah(sb.toString());
-					
-				}
-				JOptionPane.showMessageDialog(new JFrame(), "Data yang dipilih telah diubah");
-		  	}
-		}
-	%>
+	
+	
+	
 
 	<jsp:include page="header.jsp"/>
 	
