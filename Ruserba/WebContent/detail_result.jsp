@@ -42,14 +42,31 @@
 	} */
 	
 	if (rs.next()){
+		int i = 1;
+		
 		do {
-			out.println("<img src=\"" + rs.getString("img_dir") + "\">" + "<br>");
+			
+			/* out.println("<img src=\"" + rs.getString("img_dir") + "\">" + "<br/>");
 			out.println("Nama: " + rs.getString("nama") + "<br/>");	
 			out.println("Harga: " + rs.getString("harga") + "<br/>");	
 			out.println("Stok: " + rs.getString("stok") + "<br/>");	
+			out.println("Kategori: " + rs.getString("kategori") + "<br/>");	 */
+			
+			out.println("<img src=\"" + rs.getString("img_dir") + "\">" + "<br/>");
+			
+			out.println("<form method=\"post\" action =\"masukkankekeranjang\"");
+			out.println("<br/>Nama: " + rs.getString("nama") + "<br/>");	
+			out.println("Harga: " + rs.getString("harga") + "<br/>");	
+			out.println("Stok: " + rs.getString("stok") + "<br/>");	
 			out.println("Kategori: " + rs.getString("kategori") + "<br/>");	
+			out.println("Jumlah pemesanan:  <input type=\"jumlahbarang\" name = \"t" + i + "\">");
+			out.println("</form>");
+			out.println("<input type=\"submit\" value =\"Masukkan ke keranjang\">");
 			out.println("<br/>");
+			i++;
+			
 		} while (rs.next());
+			
 	}
 	else {
 		out.println("Nama barang yang dicari tidak ada");

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@page import="javax.swing.JFrame" %>
-    <%@page import="javax.swing.JOptionPane" %>
+    <%@ page import="javax.swing.JFrame" %>
+    <%@ page import="javax.swing.JOptionPane" %>
+    <%@ page import="javafiles.*" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,17 +12,36 @@
 </head>
 <body>
 
+	<script>
+	function checkForm(form){
+		if(this.nama.value == "" || this.harga.value == "" || this.stok.value == "" || this.kategori.value == "" || this.img_dir.value == ""){
+			alert("Ada entri yang masih kosong!");
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
+	</script>
+
 	<%
 	  String nama = request.getParameter("nama");
 	  String harga = request.getParameter("harga");
 	  String stok = request.getParameter("stok");
 	  String kategori = request.getParameter("kategori");
-	  String img_dir = request.getParameter("img_dir");
+	  String img_dir = "assets/img/" + request.getParameter("img_dir");
 	  
 	  if (nama != null && harga != null 
 	          && stok != null && kategori != null && img_dir != null) {
+		  
 	      javafiles.BarangManager.Tambah(nama, harga, stok, kategori, img_dir);
+	      %>
+	      <script>
+	          alert("Data berhasil ditambah");
+	  	  </script>
+	  	  <%
 	  }
+
 	%>
 
 	<jsp:include page="header.jsp"/>
@@ -46,14 +67,25 @@
 		<tr>
 		<td>Kategori</td><td> <input type="text" name="kategori"></td>
 		</tr>
-		<tr>
-		<td>img_dir</td><td> <input type="text" name="img_dir"></td>
-		</tr>
+		
+		<input type="hidden" name="img_dir" value = ${requestScope["filenameservletadd"]} >
+		
 		</table>
 		
 		<br>
 		<input type="submit" value="submit">
 	</form>
+	
+	<form action="uploadfile" method="post" enctype="multipart/form-data">
+               File:  <input type="file" name="file" />
+               <input type="submit" value="upload" />
+    </form>
+   
+    <div id="result">
+        <h3>${requestScope["message"]}</h3>
+        <h3>File yang diupload: ${requestScope["filenameservletadd"]}</h3>
+        
+    </div>
 	
 	<jsp:include page="footer.jsp"/>
 </body>
