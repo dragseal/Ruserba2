@@ -14,9 +14,19 @@
 		<servlet-class>javafiles.BarangManager</servlet-class>
 	</servlet>
 	
+	<servlet> 
+		<servlet-name>check</servlet-name> 
+		<servlet-class>javafiles.check</servlet-class>
+	</servlet>
+	
 	<servlet-mapping> 
 		<servlet-name>hello</servlet-name> 
 		<url-pattern>/indexcontent</url-pattern> 
+	</servlet-mapping>
+	
+	<servlet-mapping> 
+		<servlet-name>check</servlet-name> 
+		<url-pattern>/checkLogin</url-pattern> 
 	</servlet-mapping>
 	
 	<servlet-mapping>

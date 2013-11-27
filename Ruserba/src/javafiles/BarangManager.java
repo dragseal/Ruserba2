@@ -23,12 +23,12 @@ public class BarangManager {
 		// do nothing
 	}
 	
-	public static void Tambah (String nama, String harga, String stok, String kategori, String img_dir){
+	public static void Tambah (String nama, String harga, String stok, String kategori, String img_dir, String deskripsi){
 		
 		
 		try {
-			String query = "INSERT INTO data_barang(nama, harga, stok, kategori, img_dir) " + 
-					"VALUES (?,?,?,?,?)";
+			String query = "INSERT INTO data_barang(nama, harga, stok, kategori, img_dir, popularitas, deskripsi, priority) " + 
+					"VALUES (?,?,?,?,?,0,?,0)";
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection(sqlURL, username, password);
 			
@@ -38,6 +38,7 @@ public class BarangManager {
 			ps.setString(3, stok);
 			ps.setString(4, kategori);
 			ps.setString(5, img_dir);
+			ps.setString(6, deskripsi);
 			System.out.println("mencoba menambah!!");
 			ps.executeUpdate();
 			System.out.println("data telah ditambah!!");
@@ -56,7 +57,7 @@ public class BarangManager {
 		}
 	}
 	
-	public static void Ubah (String id, String nama, String harga, String stok, String kategori, String img_dir){
+	public static void Ubah (String id, String nama, String harga, String stok, String kategori, String img_dir, String deskripsi){
 		
 	
 		try {
@@ -72,6 +73,7 @@ public class BarangManager {
 			ps.setString(4, kategori);
 			ps.setString(5, img_dir);
 			ps.setString(6, id);
+			ps.setString(7, id);
 			ps.executeUpdate();
 			
 			con.close();
@@ -110,6 +112,36 @@ public class BarangManager {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+public static void User (String user, String pass, String nama, String nohp, String alamat, String prov, String kota, String kodepos, String email){
+		
+		
+		try {
+			String query = "INSERT INTO data_user(username, password, nama_lengkap, no_handphone) " + 
+					"VALUES (?,?,?,?)";
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(sqlURL, username, password);
+			
+			PreparedStatement ps = con.prepareStatement(query);
+			ps.setString(1, user);
+			ps.setString(2, pass);
+			ps.setString(3, nama);
+			ps.setString(4, nohp);
+			
+			ps.executeUpdate();
+			//JOptionPane.showMessageDialog(null, "Data berhasil ditambah");
+			
+			con.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			if (e.getMessage().contains("Duplicate entry"))
+				//JOptionPane.showMessageDialog(null, "Entri '" + nama + "' sudah ada");
 			e.printStackTrace();
 		}
 	}

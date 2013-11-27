@@ -3,7 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="assets/css/default.css" rel="stylesheet" type="text/css"/>
+<script src="assets/js/header.js"></script>
 <script>
+if (localStorage.getItem('activeUser') == "" || localStorage.getItem('activeUser') == null){
+	window.location="index.jsp";
+}
 var listShoppedItem = new Array();
 listShoppedItem = JSON.parse(localStorage['shopList']);
 
@@ -67,7 +72,6 @@ function showShoppingBag(){
 	
 	<div id='contentArea'>
 	<script>showShoppingBag();</script>
-	<button onclick="addItemToBag('1', '1', 'dummy', '10');">buat namabah dummy</button>
 	</div>
 	<jsp:include page="footer.jsp"/>
 </body>

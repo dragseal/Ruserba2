@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="assets/css/default.css" rel="stylesheet" type="text/css"/>
+<script src="assets/js/header.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Mengubah data...</title>
 </head>
@@ -12,20 +14,19 @@
 	<jsp:include page="header.jsp"/>
 	
 	<%
-	  String name = (String)request.getParameterNames().nextElement();
-	  StringBuffer sb = new StringBuffer(name);
-	  sb.deleteCharAt(0);
-	
+	  
+	  String filename = "";
 	  String new_id = request.getParameter("id");
 	  String nama = request.getParameter("nama");
 	  String harga = request.getParameter("harga");
 	  String stok = request.getParameter("stok");
 	  String kategori = request.getParameter("kategori");
-	  String img_dir = request.getParameter("img_dir");
+	  String img_dir = "assets/img/" + request.getParameter("img_dir");
+	  String deskripsi = request.getParameter("deskripsi");
 	  
 	  if (nama != null && harga != null 
 	          && stok != null && kategori != null && img_dir != null) {
-	      javafiles.BarangManager.Ubah(new_id, nama, harga, stok, kategori, img_dir);
+	      javafiles.BarangManager.Ubah(new_id, nama, harga, stok, kategori, img_dir, deskripsi);
 	      %><script>
 	          alert("Data berhasil diubah");
 	  	  </script><%
@@ -45,23 +46,33 @@
 			<th>img_dir</th>
 			</tr> 
 			<%
-			  
+			  String name = (String)request.getParameterNames().nextElement();
+			  StringBuffer sb = new StringBuffer(name);
+			  sb.deleteCharAt(0);	  
 			  List list = javafiles.BarangManager.lihatEntri(sb.toString());
 			  int id = 0;
 			
 			  Iterator<String> it = list.iterator();
+			  String element = "";
+			  String filepath = "";
 			  
 			  while (it.hasNext()) {
 			      id = Integer.parseInt(it.next());
 			      out.print("<tr>");
 			      for (int i = 0; i < 5; i++) {
+			    	  element = it.next();
 			          out.print("<td>");
-			          out.print(it.next());
+			          out.print(element);
 			          out.print("</td>");
-			  }
+			          if (i==4){
+			        	  
+			        	  filepath = element;
+			          }
+			  	  }
 			  out.print("<td>");
 			  out.print("</td>");
 			  out.print("</tr>");
+			  System.out.println(filepath);
 			 }
 			%>
 		</table>

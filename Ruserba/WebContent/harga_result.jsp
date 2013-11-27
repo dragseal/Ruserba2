@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="assets/css/default.css" rel="stylesheet" type="text/css"/>
+<script src="assets/js/header.js"></script>
 <title>Hasil pencarian barang dalam rentang harga</title>
 <meta charset="ISO-8859-1">
 </head>

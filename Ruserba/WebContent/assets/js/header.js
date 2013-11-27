@@ -22,11 +22,11 @@ function IsLogin(){
 
 function drawHeaderContent(){
 	document.getElementById('header').innerHTML="";
-	//document.getElementById('header').innerHTML+="<a href=\"index.php\"> <img src=\"assets/img/logo.png\" /> </a>";
-	document.getElementById('header').innerHTML+="<form  id='searchform' method='get' action='search_result.jsp'><input id='hilang' name='sortBy' value=popularitas><input id='hilang' name='currentPage' value =1><input class=\"textInput\" id='searchBar' type=\"text\" name=\"keyword\">";
+	document.getElementById('header').innerHTML+="<a href=\"index.jsp\"> <img src=\"assets/img/logo.png\" /> </a>";
+	document.getElementById('header').innerHTML+="<form  id='searchform' method='get' action='searchresult.jsp'><input id='hilang' name='sortBy' value=priority><input id='hilang' name='currentPage' value =1><input class=\"textInput\" id='searchBar' type=\"text\" name=\"keyword\">";
 	document.getElementById('searchform').innerHTML+="<input class=\"headerItem\" id='searchButton' type=\"submit\" value=\"cari!\">";
 	document.getElementById('searchform').innerHTML+="<select class=\"dropDown\" id='kategoriDropDown' name='category'>";
-	document.getElementById('kategoriDropDown').innerHTML+="<option value=\"default\">kategori...</option>";
+	document.getElementById('kategoriDropDown').innerHTML+="<option value=\"\">kategori...</option>";
 	for (var i=0;i<5;i++){
 		var opt = document.createElement("option");
         opt.value = KategoriBarang[i];
@@ -40,7 +40,7 @@ function drawHeaderContent(){
 		document.getElementById('header').innerHTML+="<button class=\"headerItem\" id='login' type=\"button\" onclick=\"logout()\">keluar</button>";
 		document.getElementById('header').innerHTML+="<a href=\"profile.html\"><button class=\"headerItem\" id='register' type=\"button\">selamat datang, " + localStorage.getItem('activeUser') +"!</button></a>";
 	} else {
-		document.getElementById('header').innerHTML+="<a href=\"registrasi.html\"><button class=\"headerItem\" id='register' type=\"button\" >daftar!</button></a>";
+		document.getElementById('header').innerHTML+="<a href=\"register.jsp\"><button class=\"headerItem\" id='register' type=\"button\" >daftar!</button></a>";
 		document.getElementById('header').innerHTML+="<button class=\"headerItem\" id='login' type=\"button\" onclick=\"triggerPopupLogin()\">masuk</button>";
 		if (LoginClicked){
 			drawPopupLogin();
@@ -55,11 +55,11 @@ function triggerPopupLogin(){
 
 function drawPopupLogin(){
 	document.getElementById('header').innerHTML+="<div id='popupLoginBubble'><div id='popupLoginContent'>";
-	document.getElementById('popupLoginContent').innerHTML+="username </br><form id='popupLoginForm' disabled>";
+	document.getElementById('popupLoginContent').innerHTML+="username </br><form id='popupLoginForm' action=\"checkLogin\">";
 	document.getElementById('popupLoginForm').innerHTML+="<input class=\"textInput\" id='loginUsername' type=\"text\" name=\"username\"></br></br>";
 	document.getElementById('popupLoginForm').innerHTML+="password</br>";
-	document.getElementById('popupLoginForm').innerHTML+="<input class=\"textInput\" id='loginPassword' type=\"password\" name=\"pwd\"></br>";
-	document.getElementById('popupLoginForm').innerHTML+="<input type='button' class=\"button\" onclick=\"login()\" value='Masuk'> <input class=\"button\" id='cancelButton' type=\"submit\" value=\"batal\" onclick=\"triggerPopupLogin()\">";
+	document.getElementById('popupLoginForm').innerHTML+="<input class=\"textInput\" id='loginPassword' type=\"password\" name=\"password\"></br>";
+	document.getElementById('popupLoginForm').innerHTML+="<input type='submit' class=\"button\" value='Masuk'> <input class=\"button\" id='cancelButton' type=\"submit\" value=\"batal\" onclick=\"triggerPopupLogin()\">";
 	document.getElementById('popupLoginForm').innerHTML+="</form><div id='failLogin'></div>";
 	document.getElementById('popupLoginContent').innerHTML+="</div></div>";
 }
@@ -67,7 +67,7 @@ function drawPopupLogin(){
 
 function login(){
 	postForm(
-		"validateLogin.jsp",
+		"checkLogin.jsp",
 		function() {
 			if (xmlhttp.readyState==4) {
 				var validate = xmlhttp.responseText;
@@ -93,7 +93,7 @@ function logout(){
 function addItemToBag(IdBarang, JumlahBarang, NamaBarang, HargaBarang){
 	var listBelanja = JSON.parse(localStorage.getItem('shopList'));
 	var itemFounded = false;
-	//var jumlahBarang = document.getElementById(IdBarang+"quantity").innerHTML;
+	JumlahBarang = document.getElementById("t"+IdBarang).value;
 	var i =0;
 	if (listBelanja==null || listBelanja==''){
 		listBelanja = new Array();
@@ -118,10 +118,15 @@ function deleteItemFromBag(IdxList){
 	listBelanja.splice(parseInt(IdxList),1);
 	localStorage.setItem('shopList',JSON.stringify(listBelanja));
 	showShoppingBag();
+	document.location.reload(true);
 }
 
 function payItemBag(){
 	var listBelanja = JSON.parse(localStorage.getItem('shopList'));
 	listBelanja.splice(1,listBelanja.length);
 	localStorage.setItem('shopList',JSON.stringify(listBelanja));
+}
+
+function getQuantity(id){
+	return getElementById(id).value;
 }

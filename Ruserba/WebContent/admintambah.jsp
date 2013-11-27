@@ -7,22 +7,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="assets/css/default.css" rel="stylesheet" type="text/css"/>
+<script src="assets/js/header.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Admin: Tambah Barang</title>
 </head>
 <body>
 
-	<script>
-	function checkForm(form){
-		if(this.nama.value == "" || this.harga.value == "" || this.stok.value == "" || this.kategori.value == "" || this.img_dir.value == ""){
-			alert("Ada entri yang masih kosong!");
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-	</script>
+
 
 	<%
 	  String nama = request.getParameter("nama");
@@ -30,11 +22,12 @@
 	  String stok = request.getParameter("stok");
 	  String kategori = request.getParameter("kategori");
 	  String img_dir = "assets/img/" + request.getParameter("img_dir");
+	  String deskripsi = request.getParameter("deskripsi");
 	  
 	  if (nama != null && harga != null 
 	          && stok != null && kategori != null && img_dir != null) {
 		  
-	      javafiles.BarangManager.Tambah(nama, harga, stok, kategori, img_dir);
+	      javafiles.BarangManager.Tambah(nama, harga, stok, kategori, img_dir, deskripsi);
 	      %>
 	      <script>
 	          alert("Data berhasil ditambah");
@@ -66,6 +59,9 @@
 		</tr>
 		<tr>
 		<td>Kategori</td><td> <input type="text" name="kategori"></td>
+		</tr>
+		<tr>
+		<td>Deskripsi</td><td> <input type="text" name="deskripsi"></td>
 		</tr>
 		
 		<input type="hidden" name="img_dir" value = ${requestScope["filenameservletadd"]} >
