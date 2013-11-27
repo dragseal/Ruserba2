@@ -109,16 +109,15 @@ function addItemToBag(IdBarang, JumlahBarang, NamaBarang, HargaBarang){
 		listBelanja.push({Id:IdBarang,Jumlah:JumlahBarang,Nama:NamaBarang,Harga:parseInt(HargaBarang)});
 	}
 	localStorage.setItem('shopList',JSON.stringify(listBelanja));
-	alert(JumlahBarang+" buah "+NamaBarang+" berhasil dtambahkan\nBarang di tas : "+listBelanja.length);
+	alert(JumlahBarang+" buah "+NamaBarang+" berhasil ditambahkan\n"+NamaBarang+" di tas : "+listBelanja.length);
 }
 
 function deleteItemFromBag(IdxList){
-	alert("asasasa");
 	var listBelanja = JSON.parse(localStorage.getItem('shopList'));
+	alert(listBelanja[IdxList].Nama+" berhasil dikeluarkan dari tas belanja!");
 	listBelanja.splice(parseInt(IdxList),1);
-	alert(listBelanja.length);
 	localStorage.setItem('shopList',JSON.stringify(listBelanja));
-
+	showShoppingBag();
 }
 
 function payItemBag(){

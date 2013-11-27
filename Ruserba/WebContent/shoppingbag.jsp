@@ -7,12 +7,6 @@
 var listShoppedItem = new Array();
 listShoppedItem = JSON.parse(localStorage['shopList']);
 
-var database = new Array();
-database[0]={Id:0,Nama:"Apel alalalal lalala alalA",Harga:2000,Stock:50};
-database[1]={Id:4,Nama:"ApelB",Harga:3000,Stock:50};
-database[2]={Id:2,Nama:"ApelC",Harga:2400,Stock:50};
-database[3]={Id:3,Nama:"ApelD",Harga:2100,Stock:50};
-database[4]={Id:1,Nama:"Apeasdsadsada sdsadsadsadlE",Harga:1200500,Stock:50};
 
 function getListBarang() {
 }
@@ -73,8 +67,8 @@ function showShoppingBag(){
 	
 	<div id='contentArea'>
 	<script>showShoppingBag();</script>
-	</div>
 	<button onclick="addItemToBag('1', '1', 'dummy', '10');">buat namabah dummy</button>
+	</div>
 	<jsp:include page="footer.jsp"/>
 </body>
 </html>
