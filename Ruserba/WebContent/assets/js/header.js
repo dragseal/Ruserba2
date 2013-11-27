@@ -113,7 +113,7 @@ function addItemToBag(IdBarang, JumlahBarang, NamaBarang, HargaBarang){
 }
 
 function deleteItemFromBag(IdxList){
-	alert(listBelanja.length);
+	alert("asasasa");
 	var listBelanja = JSON.parse(localStorage.getItem('shopList'));
 	listBelanja.splice(parseInt(IdxList),1);
 	alert(listBelanja.length);

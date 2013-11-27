@@ -48,7 +48,7 @@ function showShoppingBag(){
 			document.getElementById(tempId).innerHTML+="<div class=\"shoppedItemNumber\">x "+listShoppedItem[i].Jumlah+" =</div>";
 			document.getElementById(tempId).innerHTML+="<div class=\"shoppedItemPrice\">Rp "+listShoppedItem[i].Harga*listShoppedItem[i].Jumlah+"</div>";
 			document.getElementById(tempId).innerHTML+="</div>";
-			document.getElementById('contentArea').innerHTML+="<div class=\"eraseItem\" onclick=\"deleteItemFromBag("+i+")\">hapus</div>";
+			document.getElementById('contentArea').innerHTML+="<div class=\"eraseItem\" onclick=\"deleteItemFromBag('"+i+"')\">hapus</div>";
 		}
 		document.getElementById('contentArea').innerHTML+="<div id='bottomLine'>";
 		document.getElementById('bottomLine').innerHTML+="<div class=\"shoppedItemName\">Total</div>";
